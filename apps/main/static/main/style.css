@@ -1,0 +1,29 @@
+*{
+    padding:0;
+    margin:0;
+}
+#wrapper{
+    display:flex;
+    justify-content: space-around;
+    width:100vw;
+    height:120vh;
+}
+.logBox, .regBox{
+    display:flex;
+    flex-direction:column;
+    width:25%;
+}
+.btn{
+    float:right;
+    box-shadow: 2px 2px 5px grey;
+}
+.red{
+    color:red;
+    font-size: 12px;
+    text-shadow: 2px 2px 5px black;
+}
+.grn{
+    color:green;
+    font-size: 12px;
+    text-shadow: 2px 2px 5px black;
+}

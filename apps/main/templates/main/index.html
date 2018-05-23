@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'main/style.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title>Login or Register</title>
+    </head>
+    <body>
+        <div id='wrapper'>
+            <div class='logBox'>
+                <h1>Login</h1>
+                {% for message in messages %}
+                    {% if 'login' in message.tags %}
+                        <p class='red'>{{ message }}</p>
+                    {% elif 'grn' in message.tags %}
+                        <p class='grn'>{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+                <form action="/main/login/" method='post'>
+                    {% csrf_token %}
+                    <label class='control-label' for="email">Email:</label>
+                    <textarea class='form-control' name="email"cols="25" rows="1"></textarea><br>
+                    <label class='control-label' for="password">Password:</label>
+                    <input class='form-control' type="password" name="password" cols='25'><br>
+                    <button class='btn' type='submit'>Submit</button>
+                    <input type="hidden" name='login' value='true'>
+                </form>
+            </div>
+            <div class='regBox'>
+                <h1>Register</h1>
+                <form action="/main/validate/" method='post'>
+                    {% csrf_token %}
+                        {% for message in messages %}
+                            {% if 'reg' in message.tags %}
+                            <p class='red'>{{ message }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    <label class='control-label' for="fname">First Name:</label>
+                    <textarea class='form-control' name="fname"cols="25" rows="1"></textarea><br>
+                    <label class='control-label' for="lname">Last Name:</label>
+                    <textarea class='form-control' name="lname"cols="25" rows="1"></textarea><br>
+                    <label class='control-label' for="email">Email:</label>
+                    <textarea class='form-control' name="email"cols="25" rows="1"></textarea><br>
+                    <label class='control-label' for="password">Password:</label>
+                    <input ut class='form-control' type="password" name='password'><br>
+                    <label class='control-label' for="confirm">Confirm:</label>
+                    <input class='form-control' type="password" name='confirm'><br>
+                    <button class='btn' type='submit'>Register</button>
+                    <input type="hidden" name='login'>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

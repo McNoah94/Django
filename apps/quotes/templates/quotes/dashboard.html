@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <div id='wrapper2'>
+            <div class='linkBox'>
+                <a href="/quotes/clear/">Logout</a>
+                <a href="/quotes/users/{{ user.id }}/">My Profile</a>
+            </div>
+            <div class='headerBox'>
+                    <h1>Welcome, {{ user.fname }}.</h1>
+            </div>
+            <div class='mainBox'>
+                <div class='leftBox'>
+                    <h2>Quotable Quotes</h2>
+                    <div class='quoteBox'>
+                    {% for x in all_quotes %}
+                        <h3>{{ x.quoted_by }}: {{ x.message }}</h3>
+                        <p class='postedBy'>Posted by <a href="/quotes/users/{{ x.posted_by.id }}">{{ x.posted_by.fname }}</a></p>
+                        <form action="/quotes/addFav/{{ x.id }}/" method='post'>
+                            {% csrf_token %}
+                            <button type='submit' class='btn'>Add to my list</button>
+                        </form>
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class='rightBox'>
+                    <h2>Your favorites</h2>
+                    <div class='favBox'>
+                            {% for x in my_quotes %}
+                            <h3>{{ x.quoted_by }}: {{ x.message }}</h3>
+                            <p class='postedBy'>Posted by <a href="/quotes/users/{{ x.posted_by.id }}">{{ x.posted_by.fname }}</a></p>
+                            <form action="/quotes/remFav/{{ x.id }}/" method='post'>
+                                {% csrf_token %}
+                                <button type='submit' class='btn'>Remove from my list</button>
+                            </form>
+                        {% endfor %}
+                    </div>
+                    <div class='formBox'>
+                        {% for message in messages %}
+                            {% if 'quote' in message.tags %}
+                            <p class='red'>{{ message }}</p>
+                            {% elif 'success' in message.tags %}
+                            <p class='grn'>{{ message }}</p>
+                            {% endif %}
+                        {% endfor %}
+                        <form action="/quotes/addQuote/" method='post'>
+                            {% csrf_token %}
+                            <label class='control-label' for="quotedBy">Quoted By:</label>
+                            <input type="text" name="quotedBy" class='form-control'>
+                            <label class='control-label' for="message">Message:</label>
+                            <textarea name="message"  rows='5' class='form-control'></textarea><br>
+                            <button class='btn' type = 'submit'>Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

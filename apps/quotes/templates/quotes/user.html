@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'quotes/css/style.css' %}">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title>{{ user.fname }}</title>
+    </head>
+    <body>
+        <div id='wrapper3'>
+            <div class='linkBox'>
+                <a href="/quotes/clear/">Logout</a>
+                <a href="/quotes/dashboard/">Dashboard</a>
+            </div>
+            <div class='infoBox'>
+                <h1>Posts by {{ user.fname }}</h1>
+                <h3>Quotes uploaded: {{ count }}</h2><br>
+                {% for i in quotes %}
+                    <p class='quote'><span class='name'>{{ i.quoted_by }}</span>: {{ i.message }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>

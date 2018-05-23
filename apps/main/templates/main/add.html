@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'main/add.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <title>Add Plan</title>
+    </head>
+    <body>
+        <div id='wrapper'>
+            <div class='linkBox'>
+                <a href="/main/travels/">Home</a>
+                <a href="/main/">Logout</a>
+            </div>
+            <div class='formBox'>
+                <form action="/main/newplan/" method='post'>
+                    {% csrf_token %}
+                    <label class='control-label' for="name">Destination:</label class='control-label'>
+                    <input class='form-control' type="text" name = 'name'>
+                    <label class='control-label' for="desc" rows='5'>Description:</label class='control-label'>
+                    <input class='form-control' type="text" name ='desc'>
+                    <label class='control-label' for="from">Trip will take place from:</label class='control-label'>
+                    <input class='form-control' type="date" name='from'>
+                    <label class='control-label' for="to">To:</label class='control-label'>
+                    <input class='form-control' type="date" name='to'><br>
+                    <button class='btn' type='submit'>Add</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

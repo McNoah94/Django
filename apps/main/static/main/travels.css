@@ -1,0 +1,28 @@
+*{
+    padding:0;
+    margin:0;
+}
+#wrapper{
+    background: repeating-radial-gradient( rgba(0,255,0,1), rgba(0,255,0,0), rgba(0,255,0,1));
+    width:100vw;
+    height:120vh;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+.linkBox{
+    display:flex;
+    width:100%;
+    justify-content: flex-end;
+}
+.linkBox a{
+    display:flex;
+    float:right;
+    margin: 0px 10px;
+}
+.tableBox{
+    width:60%;
+}
+table{
+    background: solid white;
+}

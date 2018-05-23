@@ -1,0 +1,30 @@
+*{
+    margin:0;
+    padding:0;
+}
+#wrapper{
+    display:flex;
+    background: repeating-radial-gradient( rgba(0,0,255,1), rgba(0,0,255,0), rgba(0,0,255,1));
+    flex-direction:column;
+    width:100vw;
+    height:120vh;
+}
+.linkBox{
+    display:flex;
+    width:100%;
+    justify-content: flex-end;
+}
+.linkBox a{
+    display:flex;
+    float:right;
+    margin: 0px 10px;
+    text-shadow: 2px 2px 2px black;
+}
+.tripBox{
+    display:flex;
+    flex-direction:column;
+}
+.infoBox{
+    display:flex;
+    justify-content: space-around;
+}

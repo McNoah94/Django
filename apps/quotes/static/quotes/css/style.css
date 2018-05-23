@@ -1,0 +1,69 @@
+*{
+    padding:0;
+    margin:0;
+}
+#wrapper{
+    display:flex;
+    justify-content: space-around;
+    width:100vw;
+    height:100vh;
+}
+#wrapper2{
+    display:flex;
+    flex-direction:column;
+    width:100vw;
+    height:100vh;
+    padding:25px;
+}
+.logBox, .regBox{
+    display:flex;
+    flex-direction:column;
+    width:25%;
+}
+.btn{
+    float:right;
+    box-shadow: 2px 2px 5px grey;
+}
+.red{
+    color:red;
+    font-size: 12px;
+    text-shadow: 2px 2px 5px black;
+}
+.grn{
+    color:green;
+    font-size: 12px;
+    text-shadow: 2px 2px 5px black;
+}
+.quoteBox, .favBox{
+    display:flex;
+    flex-direction:column;
+    border:3px solid grey;
+    padding:10px;
+    margin-bottom:10px;
+}
+.rightBox, .leftBox{
+    width:30%;
+    padding:10px;
+}
+.mainBox{
+    display:flex;
+    justify-content: space-around;
+}
+.linkBox a{
+    float:right;
+}
+.linkBox a:nth-of-type(2){
+    border-right:1px solid black;
+    margin-right:10px;
+    padding-right:10px;
+}
+#wrapper3{
+    padding:25px;
+}
+.name{
+    color:red;
+    font-size:26px;
+}
+.quote{
+    font-size:24px;
+}
